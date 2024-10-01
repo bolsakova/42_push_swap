@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_3.c                                          :+:      :+:    :+:   */
+/*   stack_helper.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbolsako <tbolsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 18:46:26 by tbolsako          #+#    #+#             */
-/*   Updated: 2024/10/01 14:51:44 by tbolsako         ###   ########.fr       */
+/*   Created: 2024/09/24 14:55:55 by tbolsako          #+#    #+#             */
+/*   Updated: 2024/10/01 13:27:45 by tbolsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	isdigit(int c)
+int	stack_size(t_stack *stack)
 {
-	return (c >= '0' && c <= '9');
+	return (stack->size);
 }
 
-void	ft_swap(int *a, int *b)
+int	check_if_sorted(t_stack *stack)
 {
-	int	temp;
+	t_node	*current;
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
+	current = stack->top;
+	if (!current || !current->next)
+		return (0);
+	while (current->next)
+	{
+		if (current->value > current->next->value)
+			return (1);
+		current = current->next;
+	}
+	return (0);
 }

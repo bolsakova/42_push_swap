@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rshatra <rshatra@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tbolsako <tbolsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:17:28 by tbolsako          #+#    #+#             */
-/*   Updated: 2024/09/30 18:56:44 by rshatra          ###   ########.fr       */
+/*   Updated: 2024/10/01 12:36:28 by tbolsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,10 @@ char	**ft_split(char const *str, char c, t_stack *a, t_stack *b)
 		printf("Nothing to do with one number\n");
 		free_stack(a);
 		free_stack(b);
-		exit (1);
+		exit(1);
 	}
 	split = (char **)malloc((count + 1) * sizeof(char *));
 	if (!split)
 		return (NULL);
 	return (allocate_split(split, str, c, count));
 }
-

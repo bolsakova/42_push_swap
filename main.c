@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rshatra <rshatra@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tbolsako <tbolsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:19:41 by tbolsako          #+#    #+#             */
-/*   Updated: 2024/09/30 19:03:21 by rshatra          ###   ########.fr       */
+/*   Updated: 2024/10/01 12:37:54 by tbolsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	main(int ac, char *av[])
 	if (ac < 2 || !av[1][0])
 	{
 		ft_putstr_fd("Error: No input\n", 2);
+		free_stack(a);
+		free_stack(b);
 		return (1);
 	}
 	if (ac == 2 && av[1][0])

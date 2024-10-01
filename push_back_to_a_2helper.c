@@ -1,67 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_helper_1.c                                    :+:      :+:    :+:   */
+/*   push_back_to_a_2helper.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbolsako <tbolsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 14:55:55 by tbolsako          #+#    #+#             */
-/*   Updated: 2024/09/30 15:21:25 by tbolsako         ###   ########.fr       */
+/*   Created: 2024/10/01 13:20:25 by tbolsako          #+#    #+#             */
+/*   Updated: 2024/10/01 13:25:18 by tbolsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	stack_size(t_stack *stack)
-{
-	return (stack->size);
-}
-
-int	check_if_sorted(t_stack *stack)
-{
-	t_node	*current;
-
-	current = stack->top;
-	if (!current || !current->next)
-		return (0);
-	while (current->next)
-	{
-		if (current->value > current->next->value)
-			return (1);
-		current = current->next;
-	}
-	return (0);
-}
-
-int	within_chunk_range(t_stack *a, int min, int max)
-{
-	t_node	*current;
-
-	current = a->top;
-	while (current != NULL)
-	{
-		if (current->value >= min && current->value <= max)
-			return (1);
-		current = current->next;
-	}
-	return (0);
-}
-
-int	find_smallest_elem(t_stack *stack)
-{
-	int		smallest;
-	t_node	*current;
-
-	smallest = INT_MAX;
-	current = stack->top;
-	while (current)
-	{
-		if (current->value < smallest)
-			smallest = current->value;
-		current = current->next;
-	}
-	return (smallest);
-}
 
 int	find_insert_position(t_stack *a, int value)
 {
@@ -89,5 +38,5 @@ int	find_insert_position(t_stack *a, int value)
 		current = current->next;
 		pos++;
 	}
-	return (0); // This line should never be reached
+	return (0);
 }

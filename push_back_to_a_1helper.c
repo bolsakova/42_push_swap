@@ -1,80 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_helper_2.c                                    :+:      :+:    :+:   */
+/*   push_back_to_a_helper.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbolsako <tbolsako@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 13:50:20 by tbolsako          #+#    #+#             */
-/*   Updated: 2024/09/30 15:21:40 by tbolsako         ###   ########.fr       */
+/*   Created: 2024/10/01 13:17:07 by tbolsako          #+#    #+#             */
+/*   Updated: 2024/10/01 13:19:42 by tbolsako         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	find_chunk_min(t_stack *a, int chunk_size)
-{
-	int		min_value;
-	int		i;
-	t_node	*current;
-
-	min_value = a->top->value;
-	current = a->top;
-	i = 0;
-	while (current != NULL && i < chunk_size)
-	{
-		if (current->value < min_value)
-			min_value = current->value;
-		current = current->next;
-		i++;
-	}
-	return (min_value);
-}
-
-int	find_chunk_max(t_stack *a, int chunk_size)
-{
-	int		max_value;
-	int		i;
-	t_node	*current;
-
-	max_value = a->top->value;
-	i = 0;
-	current = a->top;
-	while (current != NULL && i < chunk_size)
-	{
-		if (current->value > max_value)
-			max_value = current->value;
-		current = current->next;
-		i++;
-	}
-	return (max_value);
-}
-
-int	find_nearest_elem_in_range(t_stack *a, int min, int max)
-{
-	t_node	*current;
-	int		i;
-	int		diff;
-
-	current = a->top;
-	i = 0;
-	diff = current->value - min;
-	while (current != NULL)
-	{
-		if (current->value - min > diff)
-		{
-			diff = current->value - min;
-			i++;
-		}
-		if (current->value - max > diff)
-		{
-			diff = current->value - max;
-			i++;
-		}
-		current = current->next;
-	}
-	return (i);
-}
 
 int	find_largest_elem(t_stack *b)
 {
@@ -106,7 +42,7 @@ int	find_elem_index(t_stack *stack, int value)
 		current = current->next;
 		index++;
 	}
-	return (-1); // Value not found
+	return (-1);
 }
 
 void	rotate_stack_b_to_top(t_stack *b, int max_value)
@@ -125,5 +61,38 @@ void	rotate_stack_b_to_top(t_stack *b, int max_value)
 	{
 		while (b->top->value != max_value)
 			rrb(b, 1);
+	}
+}
+
+int	find_smallest_elem(t_stack *stack)
+{
+	int		smallest;
+	t_node	*current;
+
+	smallest = INT_MAX;
+	current = stack->top;
+	while (current)
+	{
+		if (current->value < smallest)
+			smallest = current->value;
+		current = current->next;
+	}
+	return (smallest);
+}
+
+void	rotate_stack_a_to_position(t_stack *a, int target_pos)
+{
+	int	current_size;
+
+	current_size = stack_size(a);
+	if (target_pos <= current_size / 2)
+	{
+		while (target_pos-- > 0)
+			ra(a, 1);
+	}
+	else
+	{
+		while (target_pos++ < current_size)
+			rra(a, 1);
 	}
 }
